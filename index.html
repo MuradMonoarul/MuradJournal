@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murad's Journal</title>
+    <!-- ফন্ট ও স্টাইল (আপনার আগের মতোই থাকবে) -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* আপনার আগের সব CSS ঠিক থাকবে */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hind Siliguri', sans-serif; transition: background-color 0.3s, color 0.3s; overflow-x: hidden; }
+        .bengali-font { font-family: 'Noto Serif Bengali', serif; }
+        /* ডার্ক মোডে টেক্সট কালার */
+        .dark .bengali-font, .dark .text-gray-800, .dark p:not(.text-white):not(.text-purple-400) { color: #ffffff !important; }
+        .dark .glass-effect p { color: #ffffff !important; }
+        /* কাস্টম স্ক্রলবার */
+        ::-webkit-scrollbar { width: 14px; }
+        ::-webkit-scrollbar-track { background: linear-gradient(180deg, #667eea 0%, #764ba2 100%); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #f093fb 0%, #f5576c 100%); border-radius: 6px; border: 3px solid rgba(255, 255, 255, 0.3); }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #f5576c 0%, #f093fb 100%); }
+        /* অ্যানিমেশন */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        @keyframes gradient { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        /* হোয়াইট গ্লো ইফেক্ট */
+        .white-glow { box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); transition: box-shadow 0.3s ease; }
+        .white-glow:hover { box-shadow: 0 0 25px rgba(255, 255, 255, 0.9); }
+        /* গ্রেডিয়েন্ট টেক্সট */
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-size: 200% 200%; animation: gradient 5s ease infinite; }
+        /* ফ্লিপিং ক্লক */
+        .flip-clock-container { display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap; margin: 1.5rem 0; }
+        .flip-clock { display: flex; gap: 8px; justify-content: center; }
+        .flip-unit { background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; padding: 10px; min-width: 70px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.2); position: relative; overflow: hidden; transform-style: preserve-3d; }
+        .flip-unit::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 50%; background: rgba(255,255,255,0.2); border-bottom: 2px solid rgba(255,255,255,0.3); }
+        .flip-number { font-size: 2rem; font-weight: bold; color: white; text-shadow: 0 2px 5px rgba(0,0,0,0.3); line-height: 1; position: relative; transition: transform 0.6s; }
+        .flip-label { font-size: 0.7rem; color: rgba(255,255,255,0.9); text-transform: uppercase; letter-spacing: 1px; margin-top: 5px; }
+        .flip-animation { animation: flip 0.6s ease-in-out; }
+        @keyframes flip { 0% { transform: perspective(400px) rotateX(0deg); } 50% { transform: perspective(400px) rotateX(-90deg); } 100% { transform: perspective(400px) rotateX(0deg); } }
+        /* এডমিন কন্ট্রোলস */
+        .admin-controls { position: absolute; bottom: 1rem; right: 1rem; display: flex; gap: 0.5rem; opacity: 0; transition: opacity 0.3s; }
+        .content-card:hover .admin-controls { opacity: 1; }
+        .admin-btn { width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; border: none; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .admin-btn:hover { transform: scale(1.1); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); }
+        .admin-btn.delete { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .admin-btn.pin { background: linear-gradient(135deg, #FFD700, #FFA500); }
+        .admin-btn.pinned { background: linear-gradient(135deg, #FFD700, #FF8C00); }
+        /* গ্লাসমরফিজম */
+        .glass-effect { background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.18); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .dark .glass-effect { background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(255, 255, 255, 0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        /* পার্টিকেল */
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: -1; top: 0; left: 0; }
+        /* হিরো সেকশন */
+        .hero-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: rgba(155, 89, 182, 0.10); backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px); }
+        .dark .hero-section { background: rgba(155, 89, 182, 0.10); backdrop-filter: blur(1px); -webkit-backdrop-filter: blur(1px); }
+        .floating { animation: float 3s ease-in-out infinite; }
+        /* সার্চ বার */
+        .search-container { max-width: 600px; margin: 2rem auto; position: relative; }
+        .search-input { width: 100%; padding: 1.2rem 1.5rem; padding-right: 3.5rem; border-radius: 50px; border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); color: #333333; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .search-input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 15px rgba(102, 126, 234, 0.3); background: rgba(255,255,255,0.2); }
+        .search-input::placeholder { color: rgba(0, 0, 0, 0.5); }
+        .dark .search-input { color: #ffffff; }
+        .dark .search-input::placeholder { color: rgba(255, 255, 255, 0.5); }
+        .search-btn { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); border: none; color: white; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .search-btn:hover { transform: translateY(-50%) scale(1.05); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+        /* ক্যাটাগরি নেভ বাটন */
+        .category-nav-btn-small { padding: 0.6rem 1.2rem; border-radius: 50px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); white-space: nowrap; }
+        .category-nav-btn-small:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+        /* এডমিন বাটন */
+        .admin-panel-btn { display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #667eea, #764ba2); padding: 5px 15px 5px 10px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s; box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); }
+        .admin-panel-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 255, 255, 0.9); }
+        .admin-panel-btn img { width: 35px; height: 35px; border-radius: 50%; border: 2px solid white; object-fit: cover; }
+        .admin-panel-btn span { color: white; font-weight: 600; letter-spacing: 1px; }
+        .admin-panel-btn i { color: white; font-size: 1.1rem; }
+        /* শুরু করুন বাটন */
+        .start-btn { display: inline-block; padding: 1rem 2.5rem; border-radius: 50px; background: linear-gradient(135deg, #f093fb, #f5576c); color: white; font-weight: 600; font-size: 1.2rem; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 0 15px rgba(255, 255, 255, 0.7); margin-top: 3rem; }
+        .start-btn:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255, 255, 255, 0.9); }
+        /* ক্যাটাগরি বাটন */
+        .cat-btn { padding: 0.8rem 2rem; border-radius: 50px; font-weight: 600; transition: all 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .cat-btn.active { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .cat-btn:not(.active) { background: white; color: #667eea; }
+        .dark .cat-btn:not(.active) { background: #2d3748; color: #f093fb; }
+        .cat-btn:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); }
+        /* কন্টেন্ট কার্ড */
+        .content-card { position: relative; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15); }
+        .dark .content-card { background: rgba(0,0,0,0.7); }
+        .content-card:hover { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.25); }
+        .content-card.pinned { border: 2px solid #FFD700; box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2); }
+        .pinned-badge { position: absolute; top: 1rem; right: 1rem; background: linear-gradient(135deg, #FFD700, #FFA500); color: white; padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.8rem; font-weight: 600; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; }
+        /* টাইপিং ইফেক্ট */
+        .typing-effect { overflow: hidden; white-space: nowrap; border-right: 3px solid #667eea; animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite; color: #333333; }
+        .dark .typing-effect { color: #ffffff; }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #667eea; } }
+        /* মোডাল */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); z-index: 10000; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s; }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-card { width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 3px; border-radius: 30px; animation: modalPop 0.5s; }
+        .dark .modal-card { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .modal-content { background: white; border-radius: 28px; padding: 2rem; }
+        .dark .modal-content { background: #1a1a2e; color: #fff; }
+        @keyframes modalPop { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+        /* ক্যাটাগরি ম্যানেজমেন্ট স্টাইল */
+        #categoryList { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px 0; max-height: 200px; overflow-y: auto; margin-bottom: 15px; }
+        #categoryList .category-item { display: flex; align-items: center; gap: 5px; background: linear-gradient(135deg, #667eea20, #764ba220); border-radius: 50px; padding: 5px 10px; transition: all 0.3s; }
+        #categoryList .category-item:hover { background: linear-gradient(135deg, #667eea40, #764ba240); }
+        #categoryList .category-item span { font-size: 0.9rem; color: #667eea; font-weight: 500; }
+        .dark #categoryList .category-item span { color: #f093fb; }
+        #categoryList .category-actions { display: flex; gap: 3px; }
+        #categoryList .category-actions button { background: none; border: none; cursor: pointer; padding: 2px 5px; font-size: 0.8rem; transition: all 0.3s; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; }
+        #categoryList .category-actions .edit-cat-btn { color: #667eea; }
+        #categoryList .category-actions .edit-cat-btn:hover { background: #667eea20; transform: scale(1.1); }
+        #categoryList .category-actions .delete-cat-btn { color: #ef4444; }
+        #categoryList .category-actions .delete-cat-btn:hover { background: #ef444420; transform: scale(1.1); }
+        .dark #categoryList .category-actions .edit-cat-btn { color: #f093fb; }
+        .warning-text { font-size: 0.75rem; color: #ef4444; margin-top: 0.5rem; display: flex; align-items: center; gap: 0.25rem; }
+        .dark .warning-text { color: #f87171; }
+        .category-input-group { display: flex; gap: 10px; margin-top: 10px; }
+        .category-input { flex: 1; padding: 0.8rem 1rem; border-radius: 50px; border: 2px solid #667eea; background: transparent; color: #333; font-size: 1rem; }
+        .dark .category-input { color: white; border-color: #f093fb; }
+        .category-add-btn { padding: 0.8rem 1.5rem; border-radius: 50px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s; white-space: nowrap; }
+        .category-add-btn:hover { transform: scale(1.05); }
+        /* ফুটার স্টাইল */
+        .footer { background: linear-gradient(135deg, #667eea20, #764ba220); backdrop-filter: blur(10px); border-top: 1px solid rgba(255,255,255,0.1); padding: 3rem 0 1.5rem; margin-top: 4rem; }
+        .footer a { color: #667eea; transition: color 0.3s; }
+        .footer a:hover { color: #f093fb; }
+        .dark .footer a { color: #f093fb; }
+        .dark .footer a:hover { color: #667eea; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); margin-top: 2rem; padding-top: 1.5rem; text-align: center; color: #666; }
+        .dark .footer-bottom { color: #aaa; }
+        /* এডমিন প্যানেল বাটন গ্রুপ */
+        .admin-btn-group { display: flex; gap: 1rem; margin-top: 2rem; }
+        .admin-btn-group button { flex: 1; padding: 1rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; }
+        .upload-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; }
+        .save-btn { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .logout-btn { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+        .admin-btn-group button:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(0,0,0,0.2); }
+    </style>
+</head>
+<body class="light">
+    <!-- পার্টিকেল ব্যাকগ্রাউন্ড -->
+    <div id="particles-js"></div>
+
+    <!-- নেভিগেশন বার -->
+    <nav class="fixed w-full z-50 glass-effect" data-aos="fade-down">
+        <div class="container mx-auto px-4 sm:px-6 py-3">
+            <div class="flex items-center justify-between">
+                <!-- লোগো + কলম আইকন -->
+                <a href="#" class="text-4xl font-bold gradient-text flex items-center gap-2">
+                    <i class="fas fa-pen-fancy text-3xl text-purple-500"></i>
+                    <span>মুরাদ</span>
+                </a>
+                
+                <div class="flex items-center gap-4">
+                    <!-- এডমিন বাটন - হোয়াইট গ্লো -->
+                    <div class="admin-panel-btn white-glow" onclick="showLoginModal()">
+                        <i class="fas fa-lock"></i>
+                        <span class="hidden sm:inline">MURAD</span>
+                        <img src="https://i.ibb.co.com/Fk4JD9yd/Profile.jpg" alt="Murad">
+                    </div>
+                    
+                    <!-- থিম টগল -->
+                    <button onclick="toggleTheme()" class="p-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:scale-110 transition-transform" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- হিরো সেকশন -->
+    <section class="hero-section">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text floating" data-aos="fade-up">
+                মনোয়ারুল ইসলাম মুরাদ
+            </h1>
+            <div class="typing-effect text-xl md:text-3xl mb-8 mx-auto max-w-3xl" data-aos="fade-up" data-aos-delay="500">
+                শব্দের মায়াজালে অন্তরের সন্ধানে...
+            </div>
+            
+            <!-- ফ্লিপিং ক্লক + ছোট ক্যাটাগরি বাটন -->
+            <div class="flex items-center justify-center gap-4 flex-wrap" data-aos="fade-up" data-aos-delay="800">
+                <div class="flip-clock-container !m-0">
+                    <div class="text-black dark:text-white text-lg font-semibold">এখন সময়ঃ</div>
+                    <div class="flip-clock" id="flipClock"></div>
+                </div>
+                <button onclick="scrollToCategories()" class="category-nav-btn-small">
+                    <i class="fas fa-book mr-2"></i>ক্যাটাগরি
+                </button>
+            </div>
+
+            <!-- সার্চ বার -->
+            <div class="search-container" data-aos="fade-up" data-aos-delay="1000">
+                <input type="text" id="searchInput" class="search-input" placeholder="কী খুঁজছেন? (শিরোনাম, লেখক, ক্যাটাগরি...)" onkeyup="searchPosts()">
+                <button class="search-btn" onclick="searchPosts()">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- শুরু করুন বাটন - হোয়াইট গ্লো -->
+            <div class="mt-12 md:mt-16" data-aos="fade-up" data-aos-delay="1200">
+                <button onclick="scrollToCategories()" class="start-btn white-glow">
+                    <i class="fas fa-arrow-down mr-2"></i>শুরু করুন
+                </button>
+            </div>
+        </div>
+        
+        <!-- নিচের তীর -->
+        <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-black dark:text-white"></i>
+        </div>
+    </section>
+
+    <!-- ক্যাটাগরি বাটন -->
+    <section id="categories" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">আপনি কি পড়তে চান?</h2>
+            <div id="categoryButtons" class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="200">
+                <!-- ডাইনামিক ক্যাটাগরি বাটন জাভাস্ক্রিপ্ট দ্বারা লোড হবে -->
+            </div>
+        </div>
+    </section>
+
+    <!-- কন্টেন্ট গ্রিড -->
+    <section class="py-20 bg-gradient-to-b from-transparent to-purple-900/10">
+        <div class="container mx-auto px-6">
+            <div id="contentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ডাইনামিক কন্টেন্ট -->
+            </div>
+        </div>
+    </section>
+
+    <!-- লেখক পরিচিতি -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="glass-effect rounded-3xl p-8 md:p-12" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <div class="md:w-1/3 relative" data-aos="fade-right">
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-50"></div>
+                        <img src="https://i.ibb.co.com/Fk4JD9yd/Profile.jpg" alt="মনোয়ারুল ইসলাম মুরাদ" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white dark:border-gray-800 relative z-10 floating mx-auto">
+                    </div>
+                    <div class="md:w-2/3 text-center md:text-left" data-aos="fade-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">মনোয়ারুল ইসলাম মুরাদ</h2>
+                        <p class="text-base md:text-lg mb-6 text-gray-700 dark:text-white bengali-font leading-relaxed">
+                            বর্তমানে জগন্নাথ বিশ্ববিদ্যালয়ে অধ্যায়নরত একজন ছাত্র এবং অনুসন্ধিৎসু গবেষক। সমাজ ও মানবজীবনকে বোঝার আগ্রহ থেকেই আমার পড়াশোনা ও চিন্তার বিস্তার—সমাজবিজ্ঞান, দর্শন, অর্থনীতি, রাষ্ট্রবিজ্ঞান, নৃবিজ্ঞান, সাহিত্য ও চলচ্চিত্র—বিভিন্ন শাখার সংযোগস্থলে আমার কাজ ও কৌতূহল গড়ে উঠছে।
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                            <div class="flex items-center justify-center md:justify-start space-x-2 text-gray-600 dark:text-gray-300">
+                                <i class="fas fa-phone text-purple-500"></i>
+                                <span>+8801773350146</span>
+                            </div>
+                            <div class="flex items-center justify-center md:justify-start space-x-2 text-gray-600 dark:text-gray-300">
+                                <i class="fas fa-envelope text-purple-500"></i>
+                                <span>monoarulmurad@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                            <a href="https://www.facebook.com/muradmonoarul/" target="_blank" class="social-icon w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/murad.mp4/" target="_blank" class="social-icon w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/monoarulmurad/" target="_blank" class="social-icon w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@MuradMonoarul" target="_blank" class="social-icon w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ফুটার -->
+    <footer class="footer">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold gradient-text mb-4">Murad's Journal</h3>
+                    <p class="text-gray-600 dark:text-gray-400">শব্দের মায়াজালে অন্তরের সন্ধানে...</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">হোম</a></li>
+                        <li><a href="#categories" onclick="scrollToCategories()" class="hover:underline">ক্যাটাগরি</a></li>
+                        <li><a href="#" class="hover:underline">লেখক পরিচিতি</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:underline">Sitemap</a></li>
+                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:underline">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-600 dark:text-gray-400">
+                        <li><i class="fas fa-phone text-purple-500 mr-2"></i>+8801773350146</li>
+                        <li><i class="fas fa-envelope text-purple-500 mr-2"></i>monoarulmurad@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Murad's Journal. All rights reserved. | Designed with ❤️ by Monoarul Islam Murad</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- রিড মোডাল -->
+    <div id="readModal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-content">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 id="modalTitle" class="text-2xl md:text-3xl font-bold gradient-text"></h2>
+                    <button onclick="closeModal()" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:scale-110 transition-transform">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="mb-6 flex flex-wrap gap-4 text-sm md:text-base text-gray-600 dark:text-gray-300">
+                    <span><i class="fas fa-user mr-2 text-purple-500"></i><span id="modalAuthor"></span></span>
+                    <span><i class="fas fa-calendar mr-2 text-purple-500"></i><span id="modalDate"></span></span>
+                    <span><i class="fas fa-clock mr-2 text-purple-500"></i><span id="modalTime"></span></span>
+                    <span><i class="fas fa-tag mr-2 text-purple-500"></i><span id="modalCategory"></span></span>
+                </div>
+                <div id="modalContent" class="bengali-font text-base md:text-lg leading-relaxed text-gray-800 dark:text-white"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- লগিন মোডাল -->
+    <div id="loginModal" class="modal-overlay">
+        <div class="modal-card max-w-md">
+            <div class="modal-content">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Admin Panel</h2>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Username</label>
+                        <input type="text" id="username" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                        <input type="password" id="password" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors">
+                    </div>
+                    <button onclick="handleLogin()" class="w-full py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
+                        Log In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ভেরিফিকেশন মোডাল -->
+    <div id="verifyModal" class="modal-overlay">
+        <div class="modal-card max-w-md">
+            <div class="modal-content">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Admin Verification</h2>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Username</label>
+                        <input type="text" id="verifyUsername" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent focus:outline-none focus:border-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Password</label>
+                        <input type="password" id="verifyPassword" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent focus:outline-none focus:border-purple-500">
+                    </div>
+                    <button onclick="verifyAndProceed()" class="w-full py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- এডিট মোডাল -->
+    <div id="editModal" class="modal-overlay">
+        <div class="modal-card max-w-2xl">
+            <div class="modal-content">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Edit Post</h2>
+                <form id="editForm" onsubmit="handleEdit(event)">
+                    <input type="hidden" id="editId">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Title</label>
+                            <input type="text" id="editTitle" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Category</label>
+                            <select id="editCategory" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                                <!-- ডাইনামিক ক্যাটাগরি অপশন জাভাস্ক্রিপ্ট দ্বারা লোড হবে -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Author</label>
+                            <input type="text" id="editAuthor" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 dark:text-gray-300 mb-2">Date</label>
+                                <input type="date" id="editDate" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 dark:text-gray-300 mb-2">Time</label>
+                                <input type="time" id="editTime" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <input type="checkbox" id="useCurrentTime" onclick="toggleDateTime()">
+                            <label class="text-gray-700 dark:text-gray-300">Use current date & time</label>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Content</label>
+                            <textarea id="editContent" required rows="8" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent"></textarea>
+                        </div>
+                        <div class="flex gap-4">
+                            <button type="submit" class="flex-1 py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
+                                Update
+                            </button>
+                            <button type="button" onclick="closeEditModal()" class="flex-1 py-4 rounded-lg bg-gray-500 text-white font-semibold hover:scale-105 transition-transform">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- আপলোড মোডাল (ক্যাটাগরি ম্যানেজমেন্ট সহ) -->
+    <div id="adminModal" class="modal-overlay">
+        <div class="modal-card max-w-2xl">
+            <div class="modal-content">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Upload New Post</h2>
+                
+                <!-- ক্যাটাগরি ম্যানেজমেন্ট সেকশন -->
+                <div class="mb-8 p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                    <h3 class="text-lg font-semibold text-purple-600 dark:text-purple-400 mb-3 flex items-center gap-2">
+                        <i class="fas fa-tags"></i>
+                        Manage Categories
+                    </h3>
+                    
+                    <!-- এক্সিস্টিং ক্যাটাগরি দেখানোর জন্য -->
+                    <div class="mb-4">
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2 text-sm font-medium">Current Categories:</label>
+                        <div id="categoryList" class="flex flex-wrap gap-2 mb-3">
+                            <!-- ডাইনামিক ক্যাটাগরি লিস্ট জাভাস্ক্রিপ্ট দ্বারা লোড হবে -->
+                        </div>
+                    </div>
+                    
+                    <!-- নতুন ক্যাটাগরি যোগ করার ইনপুট -->
+                    <div class="category-input-group">
+                        <input type="text" id="newCategory" class="category-input" placeholder="নতুন ক্যাটাগরির নাম">
+                        <button type="button" onclick="addNewCategory()" class="category-add-btn">
+                            <i class="fas fa-plus mr-2"></i>Add
+                        </button>
+                    </div>
+                    
+                    <!-- সতর্কতা বার্তা -->
+                    <div class="warning-text">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        ক্যাটাগরি ডিলিট করলে তার সব পোস্ট "বিবিধ" ক্যাটাগরিতে চলে যাবে।
+                    </div>
+                </div>
+
+                <form id="uploadForm" onsubmit="handleUpload(event)">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Title</label>
+                            <input type="text" id="title" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Category</label>
+                            <select id="category" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                                <option value="">Select</option>
+                                <!-- ডাইনামিক ক্যাটাগরি অপশন জাভাস্ক্রিপ্ট দ্বারা লোড হবে -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Author</label>
+                            <input type="text" id="author" required value="মনোয়ারুল ইসলাম মুরাদ" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700 dark:text-gray-300 mb-2">Date (Optional)</label>
+                                <input type="date" id="postDate" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 dark:text-gray-300 mb-2">Time (Optional)</label>
+                                <input type="time" id="postTime" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent">
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <input type="checkbox" id="useAutoDateTime" checked>
+                            <label class="text-gray-700 dark:text-gray-300">Use automatic date & time</label>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 dark:text-gray-300 mb-2">Content</label>
+                            <textarea id="content" required rows="8" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent"></textarea>
+                        </div>
+                        
+                        <!-- এডমিন বাটন গ্রুপ -->
+                        <div class="admin-btn-group">
+                            <button type="submit" class="upload-btn">
+                                <i class="fas fa-cloud-upload-alt mr-2"></i>Upload
+                            </button>
+                            <button type="button" onclick="saveChanges()" class="save-btn">
+                                <i class="fas fa-save mr-2"></i>Save
+                            </button>
+                            <button type="button" onclick="logout()" class="logout-btn">
+                                <i class="fas fa-sign-out-alt mr-2"></i>Log out
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ক্যাটাগরি এডিট মোডাল -->
+    <div id="editCategoryModal" class="modal-overlay">
+        <div class="modal-card max-w-md">
+            <div class="modal-content">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Edit Category</h2>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 dark:text-gray-300 mb-2">Category Name</label>
+                        <input type="text" id="editCategoryName" class="w-full px-4 py-3 rounded-lg border-2 border-purple-300 dark:border-purple-700 bg-transparent focus:outline-none focus:border-purple-500">
+                    </div>
+                    <input type="hidden" id="editCategoryOldName">
+                    <div class="flex gap-4">
+                        <button onclick="confirmEditCategory()" class="flex-1 py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
+                            Update
+                        </button>
+                        <button onclick="closeEditCategoryModal()" class="flex-1 py-4 rounded-lg bg-gray-500 text-white font-semibold hover:scale-105 transition-transform">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // AOS ইনিশিয়ালাইজ
+        AOS.init({ duration: 1000, once: true });
+
+        // পার্টিকেল
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100, density: { enable: true, value_area: 800 } },
+                color: { value: '#667eea' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.6, random: true },
+                size: { value: 3, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#764ba2',
+                    opacity: 0.5,
+                    width: 1.5
+                },
+                move: { enable: true, speed: 2 }
+            }
+        });
+
+        // ======================
+        // SHEETDB কনফিগারেশন
+        // ======================
+        const SHEETDB_API_URL = 'https://sheetdb.io/api/v1/hml4up5iqjlkm'; // আপনার API_ID দিন
+        
+        // গ্লোবাল ভেরিয়েবল
+        let categories = [];
+        let posts = [];
+        let pendingAction = null;
+        let pendingPostId = null;
+        let pendingCategory = null;
+
+        // ======================
+        // ডাটা লোড করার ফাংশন
+        // ======================
+        async function loadPosts() {
+            try {
+                const response = await fetch(SHEETDB_API_URL);
+                const data = await response.json();
+                
+                // SheetDB থেকে পাওয়া ডাটা আমাদের ফরম্যাটে কনভার্ট করুন
+                posts = data.map(row => ({
+                    id: parseInt(row.id) || Date.now(),
+                    title: row.title || '',
+                    category: row.category || 'বিবিধ',
+                    author: row.author || 'মনোয়ারুল ইসলাম মুরাদ',
+                    date: row.date || new Date().toISOString().split('T')[0],
+                    time: row.time || new Date().toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' }),
+                    content: row.content || '',
+                    pinned: row.pinned === 'TRUE' || row.pinned === 'true' || false
+                }));
+                
+                // ক্যাটাগরি লিস্ট আপডেট করুন
+                updateCategoriesFromPosts();
+                displayPosts();
+                updateCategoryButtons();
+                updateCategorySelects();
+                updateCategoryList();
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                // এরর হলে খালি অ্যারে
+                posts = [];
+                // ডিফল্ট ক্যাটাগরি সেট করুন
+                categories = ['কবিতা', 'প্রবন্ধ', 'ছোট গল্প', 'সমসাময়িক ইস্যু', 'বিবিধ'];
+            }
+        }
+
+        // পোস্ট থেকে ক্যাটাগরি লিস্ট আপডেট করুন
+        function updateCategoriesFromPosts() {
+            const uniqueCategories = [...new Set(posts.map(post => post.category))];
+            // ডিফল্ট ক্যাটাগরি যোগ করুন
+            const defaultCategories = ['কবিতা', 'প্রবন্ধ', 'ছোট গল্প', 'সমসাময়িক ইস্যু', 'বিবিধ'];
+            categories = [...new Set([...defaultCategories, ...uniqueCategories])];
+        }
+
+        // ======================
+        // ডাটা সেভ করার ফাংশন
+        // ======================
+        async function savePosts() {
+            try {
+                // SheetDB-এর জন্য ডাটা ফরম্যাট করুন
+                const dataToSave = posts.map(post => ({
+                    id: post.id.toString(),
+                    title: post.title,
+                    category: post.category,
+                    author: post.author,
+                    date: post.date,
+                    time: post.time,
+                    content: post.content,
+                    pinned: post.pinned ? 'TRUE' : 'FALSE'
+                }));
+                
+                // PUT request - সব ডাটা আপডেট করুন
+                const response = await fetch(SHEETDB_API_URL, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(dataToSave)
+                });
+                
+                if (response.ok) {
+                    console.log('Data saved successfully');
+                } else {
+                    console.error('Error saving data');
+                }
+            } catch (error) {
+                console.error('Error saving posts:', error);
+            }
+        }
+
+        // নতুন পোস্ট যোগ করার ফাংশন
+        async function addPost(newPost) {
+            try {
+                const response = await fetch(SHEETDB_API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: newPost.id.toString(),
+                        title: newPost.title,
+                        category: newPost.category,
+                        author: newPost.author,
+                        date: newPost.date,
+                        time: newPost.time,
+                        content: newPost.content,
+                        pinned: newPost.pinned ? 'TRUE' : 'FALSE'
+                    })
+                });
+                
+                if (response.ok) {
+                    await loadPosts(); // রিলোড ডাটা
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Error adding post:', error);
+                return false;
+            }
+        }
+
+        // পোস্ট আপডেট করার ফাংশন
+        async function updatePost(updatedPost) {
+            try {
+                // SheetDB-এ আপডেট করতে ID দিয়ে সার্চ করে আপডেট করতে হয়
+                const response = await fetch(`${SHEETDB_API_URL}/id/${updatedPost.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        title: updatedPost.title,
+                        category: updatedPost.category,
+                        author: updatedPost.author,
+                        date: updatedPost.date,
+                        time: updatedPost.time,
+                        content: updatedPost.content,
+                        pinned: updatedPost.pinned ? 'TRUE' : 'FALSE'
+                    })
+                });
+                
+                if (response.ok) {
+                    await loadPosts(); // রিলোড ডাটা
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Error updating post:', error);
+                return false;
+            }
+        }
+
+        // পোস্ট ডিলিট করার ফাংশন
+        async function deletePost(postId) {
+            try {
+                const response = await fetch(`${SHEETDB_API_URL}/id/${postId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.ok) {
+                    await loadPosts(); // রিলোড ডাটা
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Error deleting post:', error);
+                return false;
+            }
+        }
+
+        // ======================
+        // UI আপডেট ফাংশন
+        // ======================
+        function updateCategoryButtons() {
+            const categoryContainer = document.getElementById('categoryButtons');
+            if (categoryContainer) {
+                categoryContainer.innerHTML = `
+                    <button onclick="filterContent('সব')" class="cat-btn px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-110 transition-all shadow-lg active">সব</button>
+                    ${categories.map(cat => `
+                        <button onclick="filterContent('${cat}')" class="cat-btn px-6 py-3 rounded-full bg-white dark:bg-gray-800 text-purple-600 dark:text-purple-400 font-semibold hover:scale-110 transition-all shadow-lg">${cat}</button>
+                    `).join('')}
+                `;
+            }
+        }
+
+        function updateCategorySelects() {
+            const categorySelects = ['category', 'editCategory'];
+            categorySelects.forEach(selectId => {
+                const select = document.getElementById(selectId);
+                if (select) {
+                    const currentValue = select.value;
+                    select.innerHTML = `<option value="">Select</option>${categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}`;
+                    if (currentValue && categories.includes(currentValue)) {
+                        select.value = currentValue;
+                    }
+                }
+            });
+        }
+
+        function updateCategoryList() {
+            const categoryList = document.getElementById('categoryList');
+            if (categoryList) {
+                categoryList.innerHTML = categories.map(cat => `
+                    <div class="category-item">
+                        <span class="text-sm">${cat}</span>
+                        <div class="category-actions">
+                            <button type="button" onclick="showEditCategoryModal('${cat}')" class="edit-cat-btn" title="Edit Category">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            ${cat !== 'বিবিধ' ? `
+                                <button type="button" onclick="showDeleteCategoryModal('${cat}')" class="delete-cat-btn" title="Delete Category">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        function displayFilteredPosts(filteredPosts) {
+            const contentGrid = document.getElementById('contentGrid');
+            
+            filteredPosts.sort((a, b) => {
+                if (a.pinned && !b.pinned) return -1;
+                if (!a.pinned && b.pinned) return 1;
+                
+                const dateA = new Date(a.date + ' ' + a.time);
+                const dateB = new Date(b.date + ' ' + b.time);
+                return dateB - dateA;
+            });
+            
+            if (filteredPosts.length === 0) {
+                contentGrid.innerHTML = '<div class="col-span-full text-center py-20"><div class="text-2xl text-gray-600 dark:text-gray-400">কোনো লেখা পাওয়া যায়নি</div></div>';
+                return;
+            }
+
+            contentGrid.innerHTML = filteredPosts.map(post => `
+                <div class="relative glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-500 h-full flex flex-col content-card ${post.pinned ? 'pinned' : ''}" data-aos="fade-up">
+                    ${post.pinned ? '<div class="pinned-badge"><i class="fas fa-thumbtack mr-1"></i>পিন করা</div>' : ''}
+                    <span class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold mb-4 w-fit">
+                        ${post.category}
+                    </span>
+                    <h3 class="text-2xl font-bold mb-3 gradient-text">${post.title}</h3>
+                    <div class="flex flex-wrap gap-4 text-sm text-gray-600 dark:text-gray-300 mb-4">
+                        <span><i class="fas fa-user mr-1"></i>${post.author}</span>
+                        <span><i class="fas fa-calendar mr-1"></i>${post.date}</span>
+                        <span><i class="fas fa-clock mr-1"></i>${post.time}</span>
+                    </div>
+                    <p class="text-gray-600 dark:text-white mb-6 flex-grow">
+                        ${post.content.substring(0, 100)}...
+                    </p>
+                    <button onclick='showFullPost(${JSON.stringify(post).replace(/'/g, "\\'")})' class="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform w-fit mb-12">
+                        <i class="fas fa-book-open mr-2"></i>বিস্তারিত পড়ুন
+                    </button>
+                    
+                    <div class="admin-controls">
+                        <button onclick="showVerifyModal('pin', ${post.id})" class="admin-btn pin ${post.pinned ? 'pinned' : ''}">
+                            <i class="fas fa-thumbtack"></i>
+                        </button>
+                        <button onclick="showVerifyModal('edit', ${post.id})" class="admin-btn">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button onclick="showVerifyModal('delete', ${post.id})" class="admin-btn delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function displayPosts(filterCategory = 'সব') {
+            let filteredPosts = posts;
+            if (filterCategory !== 'সব') {
+                filteredPosts = posts.filter(post => post.category === filterCategory);
+            }
+            displayFilteredPosts(filteredPosts);
+        }
+
+        // ======================
+        // ক্যাটাগরি ম্যানেজমেন্ট
+        // ======================
+        function addNewCategory() {
+            const newCategory = document.getElementById('newCategory').value.trim();
+            if (newCategory) {
+                if (categories.includes(newCategory)) {
+                    alert('এই ক্যাটাগরিটি ইতিমধ্যে আছে!');
+                } else {
+                    categories.push(newCategory);
+                    updateCategoryButtons();
+                    updateCategorySelects();
+                    updateCategoryList();
+                    document.getElementById('newCategory').value = '';
+                    alert('নতুন ক্যাটাগরি যোগ করা হয়েছে!');
+                }
+            } else {
+                alert('দয়া করে একটি ক্যাটাগরির নাম দিন!');
+            }
+        }
+
+        function showEditCategoryModal(categoryName) {
+            pendingCategory = categoryName;
+            document.getElementById('editCategoryName').value = categoryName;
+            document.getElementById('editCategoryOldName').value = categoryName;
+            document.getElementById('editCategoryModal').classList.add('active');
+        }
+
+        function closeEditCategoryModal() {
+            document.getElementById('editCategoryModal').classList.remove('active');
+            document.getElementById('editCategoryName').value = '';
+            document.getElementById('editCategoryOldName').value = '';
+        }
+
+        function confirmEditCategory() {
+            const newName = document.getElementById('editCategoryName').value.trim();
+            const oldName = document.getElementById('editCategoryOldName').value;
+            
+            if (newName && newName !== oldName) {
+                if (categories.includes(newName)) {
+                    alert('এই নামে আরেকটি ক্যাটাগরি ইতিমধ্যে আছে!');
+                    return;
+                }
+                
+                // ক্যাটাগরি নাম আপডেট
+                const index = categories.indexOf(oldName);
+                if (index !== -1) {
+                    categories[index] = newName;
+                    
+                    // সব পোস্টের ক্যাটাগরি আপডেট
+                    posts.forEach(post => {
+                        if (post.category === oldName) {
+                            post.category = newName;
+                        }
+                    });
+                    
+                    savePosts(); // ডাটাবেসে সেভ করুন
+                    
+                    updateCategoryButtons();
+                    updateCategorySelects();
+                    updateCategoryList();
+                    
+                    closeEditCategoryModal();
+                    alert('ক্যাটাগরি নাম আপডেট করা হয়েছে!');
+                }
+            } else {
+                closeEditCategoryModal();
+            }
+        }
+
+        function showDeleteCategoryModal(categoryToDelete) {
+            pendingAction = 'deleteCategory';
+            pendingCategory = categoryToDelete;
+            document.getElementById('verifyModal').classList.add('active');
+        }
+
+        async function confirmDeleteCategory(categoryToDelete) {
+            // এই ক্যাটাগরির সব পোস্ট "বিবিধ" ক্যাটাগরিতে মুভ করুন
+            posts.forEach(post => {
+                if (post.category === categoryToDelete) {
+                    post.category = 'বিবিধ';
+                }
+            });
+            
+            // ক্যাটাগরি লিস্ট থেকে ডিলিট করুন
+            categories = categories.filter(cat => cat !== categoryToDelete);
+            
+            await savePosts(); // ডাটাবেসে সেভ করুন
+            
+            updateCategoryButtons();
+            updateCategorySelects();
+            updateCategoryList();
+            
+            filterContent('সব');
+            alert(`"${categoryToDelete}" ক্যাটাগরি ডিলিট করা হয়েছে এবং এর সব পোস্ট "বিবিধ" ক্যাটাগরিতে স্থানান্তর করা হয়েছে!`);
+        }
+
+        // ======================
+        // সার্চ ফাংশন
+        // ======================
+        function searchPosts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            if (searchTerm === '') {
+                const currentCategory = document.querySelector('.cat-btn.active')?.textContent || 'সব';
+                filterContent(currentCategory);
+                return;
+            }
+            
+            const filteredPosts = posts.filter(post => 
+                post.title.toLowerCase().includes(searchTerm) ||
+                post.author.toLowerCase().includes(searchTerm) ||
+                post.category.toLowerCase().includes(searchTerm) ||
+                post.content.toLowerCase().includes(searchTerm)
+            );
+            
+            displayFilteredPosts(filteredPosts);
+        }
+
+        // ======================
+        // ভেরিফিকেশন ফাংশন
+        // ======================
+        function showVerifyModal(action, postId) {
+            pendingAction = action;
+            pendingPostId = postId;
+            document.getElementById('verifyModal').classList.add('active');
+        }
+
+        async function verifyAndProceed() {
+            const username = document.getElementById('verifyUsername').value;
+            const password = document.getElementById('verifyPassword').value;
+
+            if (username === 'murad' && password === 'murad2006') {
+                document.getElementById('verifyModal').classList.remove('active');
+                document.getElementById('verifyUsername').value = '';
+                document.getElementById('verifyPassword').value = '';
+                
+                if (pendingAction === 'edit') {
+                    const post = posts.find(p => p.id === pendingPostId);
+                    if (post) {
+                        document.getElementById('editId').value = post.id;
+                        document.getElementById('editTitle').value = post.title;
+                        document.getElementById('editCategory').value = post.category;
+                        document.getElementById('editAuthor').value = post.author;
+                        document.getElementById('editDate').value = post.date;
+                        document.getElementById('editTime').value = post.time;
+                        document.getElementById('editContent').value = post.content;
+                        document.getElementById('editModal').classList.add('active');
+                    }
+                } else if (pendingAction === 'delete') {
+                    if (confirm('Are you sure you want to delete this post?')) {
+                        await deletePost(pendingPostId);
+                        const currentCategory = document.querySelector('.cat-btn.active')?.textContent || 'সব';
+                        displayPosts(currentCategory);
+                    }
+                } else if (pendingAction === 'pin') {
+                    const post = posts.find(p => p.id === pendingPostId);
+                    if (post) {
+                        post.pinned = !post.pinned;
+                        await savePosts();
+                        const currentCategory = document.querySelector('.cat-btn.active')?.textContent || 'সব';
+                        displayPosts(currentCategory);
+                    }
+                } else if (pendingAction === 'deleteCategory') {
+                    await confirmDeleteCategory(pendingCategory);
+                }
+            } else {
+                alert('Invalid username or password!');
+            }
+        }
+
+        // ======================
+        // এডিট ফাংশন
+        // ======================
+        async function handleEdit(event) {
+            event.preventDefault();
+            
+            const useCurrent = document.getElementById('useCurrentTime').checked;
+            const now = new Date();
+            
+            const updatedPost = {
+                id: parseInt(document.getElementById('editId').value),
+                title: document.getElementById('editTitle').value,
+                category: document.getElementById('editCategory').value,
+                author: document.getElementById('editAuthor').value,
+                date: useCurrent ? now.toISOString().split('T')[0] : document.getElementById('editDate').value,
+                time: useCurrent ? now.toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' }) : document.getElementById('editTime').value,
+                content: document.getElementById('editContent').value,
+                pinned: posts.find(p => p.id === parseInt(document.getElementById('editId').value))?.pinned || false
+            };
+
+            await updatePost(updatedPost);
+            closeEditModal();
+            alert('Post updated successfully!');
+        }
+
+        function toggleDateTime() {
+            const useCurrent = document.getElementById('useCurrentTime').checked;
+            document.getElementById('editDate').disabled = useCurrent;
+            document.getElementById('editTime').disabled = useCurrent;
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('active');
+        }
+
+        function showFullPost(post) {
+            document.getElementById('modalTitle').textContent = post.title;
+            document.getElementById('modalAuthor').textContent = post.author;
+            document.getElementById('modalDate').textContent = post.date;
+            document.getElementById('modalTime').textContent = post.time;
+            document.getElementById('modalCategory').textContent = post.category;
+            document.getElementById('modalContent').innerHTML = post.content.replace(/\n/g, '<br>');
+            document.getElementById('readModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('readModal').classList.remove('active');
+        }
+
+        function filterContent(category) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.textContent === category) {
+                    btn.classList.remove('bg-white', 'dark:bg-gray-800', 'text-purple-600', 'dark:text-purple-400');
+                    btn.classList.add('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
+                } else {
+                    btn.classList.remove('bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
+                    btn.classList.add('bg-white', 'dark:bg-gray-800', 'text-purple-600', 'dark:text-purple-400');
+                }
+            });
+            displayPosts(category);
+        }
+
+        // ======================
+        // মোডাল কন্ট্রোল
+        // ======================
+        function showLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function hideLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function showAdminModal() {
+            document.getElementById('adminModal').classList.add('active');
+            updateCategoryList();
+            updateCategorySelects();
+        }
+
+        function hideAdminModal() {
+            document.getElementById('adminModal').classList.remove('active');
+        }
+
+        function handleLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'murad' && password === 'murad2006') {
+                hideLoginModal();
+                showAdminModal();
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            } else {
+                alert('Invalid username or password!');
+            }
+        }
+
+        async function handleUpload(event) {
+            event.preventDefault();
+
+            const useAuto = document.getElementById('useAutoDateTime').checked;
+            let date, time;
+
+            if (useAuto) {
+                const now = new Date();
+                date = now.toISOString().split('T')[0];
+                time = now.toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' });
+            } else {
+                date = document.getElementById('postDate').value;
+                time = document.getElementById('postTime').value;
+                if (!date || !time) {
+                    alert('Please select date and time!');
+                    return;
+                }
+            }
+
+            const newPost = {
+                id: Date.now(),
+                title: document.getElementById('title').value,
+                category: document.getElementById('category').value,
+                author: document.getElementById('author').value,
+                date: date,
+                time: time,
+                content: document.getElementById('content').value,
+                pinned: false
+            };
+
+            await addPost(newPost);
+            hideAdminModal();
+            event.target.reset();
+            document.getElementById('useAutoDateTime').checked = true;
+            alert('Post uploaded successfully!');
+        }
+
+        function saveChanges() {
+            savePosts();
+            updateCategoryButtons();
+            updateCategorySelects();
+            updateCategoryList();
+            alert('All changes saved successfully!');
+        }
+
+        function logout() {
+            hideAdminModal();
+            document.getElementById('adminModal').classList.remove('active');
+            document.getElementById('loginModal').classList.remove('active');
+            alert('Logged out successfully!');
+        }
+
+        function scrollToCategories() {
+            document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // ফ্লিপিং ক্লক ফাংশন
+        let lastSeconds = 0;
+        let lastMinutes = 0;
+        let lastHours = 0;
+
+        function updateFlipClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            
+            const secondsNum = now.getSeconds();
+            const minutesNum = now.getMinutes();
+            const hoursNum = now.getHours();
+            
+            let secondsClass = 'flip-number';
+            let minutesClass = 'flip-number';
+            let hoursClass = 'flip-number';
+            
+            if (secondsNum !== lastSeconds) {
+                secondsClass += ' flip-animation';
+                lastSeconds = secondsNum;
+            }
+            
+            if (minutesNum !== lastMinutes) {
+                minutesClass += ' flip-animation';
+                lastMinutes = minutesNum;
+            }
+            
+            if (hoursNum !== lastHours) {
+                hoursClass += ' flip-animation';
+                lastHours = hoursNum;
+            }
+            
+            document.getElementById('flipClock').innerHTML = `
+                <div class="flip-unit">
+                    <div class="${hoursClass}">${hours}</div>
+                    <div class="flip-label">HOUR</div>
+                </div>
+                <div class="flip-unit">
+                    <div class="${minutesClass}">${minutes}</div>
+                    <div class="flip-label">MIN</div>
+                </div>
+                <div class="flip-unit">
+                    <div class="${secondsClass}">${seconds}</div>
+                    <div class="flip-label">SEC</div>
+                </div>
+            `;
+        }
+        setInterval(updateFlipClock, 1000);
+        updateFlipClock();
+
+        // থিম টগল
+        function toggleTheme() {
+            const body = document.body;
+            const toggle = document.getElementById('themeToggle');
+            
+            if (body.classList.contains('light')) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                toggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                toggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.classList.add(savedTheme);
+        document.getElementById('themeToggle').innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+
+        // মোডাল বন্ধ করতে ক্লিক
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // পেজ লোড
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPosts();
+        });
+    </script>
+</body>
+</html>
