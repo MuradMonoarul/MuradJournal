@@ -188,7 +188,7 @@
                 </div>
                 <button onclick="scrollToCategories()" class="category-nav-btn-small">
                     <i class="fas fa-book mr-2"></i>ক্যাটাগরি
-                </button>
+                </button> 
             </div>
 
             <!-- সার্চ বার -->
@@ -243,15 +243,15 @@
                     </div>
                     <div class="md:w-2/3 text-center md:text-left" data-aos="fade-left">
                         <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">মনোয়ারুল ইসলাম মুরাদ</h2>
-                        <p class="text-base md:text-lg mb-6 text-gray-700 dark:text-white bengali-font leading-relaxed">
+                        <p class="text-base md:text-lg mb-6 text-black-700 dark:text-white bengali-font leading-relaxed">
                             বর্তমানে জগন্নাথ বিশ্ববিদ্যালয়ে অধ্যায়নরত একজন ছাত্র এবং অনুসন্ধিৎসু গবেষক। সমাজ ও মানবজীবনকে বোঝার আগ্রহ থেকেই আমার পড়াশোনা ও চিন্তার বিস্তার—সমাজবিজ্ঞান, দর্শন, অর্থনীতি, রাষ্ট্রবিজ্ঞান, নৃবিজ্ঞান, সাহিত্য ও চলচ্চিত্র—বিভিন্ন শাখার সংযোগস্থলে আমার কাজ ও কৌতূহল গড়ে উঠছে।
                         </p>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                            <div class="flex items-center justify-center md:justify-start space-x-2 text-gray-600 dark:text-gray-300">
+                            <div class="flex items-center justify-center md:justify-start space-x-2 text-black-600 dark:text-white-300">
                                 <i class="fas fa-phone text-purple-500"></i>
-                                <span>+8801773350146</span>
+                                <span><a href="tel:+8801773350146" target="_blank">+880 1773 3350146</a></span>
                             </div>
-                            <div class="flex items-center justify-center md:justify-start space-x-2 text-gray-600 dark:text-gray-300">
+                            <div class="flex items-center justify-center md:justify-start space-x-2 text-black-600 dark:text-white-300">
                                 <i class="fas fa-envelope text-purple-500"></i>
                                 <span>monoarulmurad@gmail.com</span>
                             </div>
@@ -289,30 +289,53 @@
                     <ul class="space-y-2">
                         <li><a href="#" class="hover:underline">হোম</a></li>
                         <li><a href="#categories" onclick="scrollToCategories()" class="hover:underline">ক্যাটাগরি</a></li>
-                        <li><a href="#" class="hover:underline">লেখক পরিচিতি</a></li>
+                        <li><a href="https://www.facebook.com/muradmonoarul/"target="_blank" class="hover:underline">আমার পরিচয়</a></li>
                     </ul>
                 </div>
-                <div>
+				  <!-- ওয়াটাঅ্যাপ বাটন -->
+				<p>
+					<a href="https://wa.me/8801773350146?text=Hi%20MURAD%20!"
+								target="_blank"
+								style="
+									background: #25D366;
+									color: white;
+									padding: 10px 15px;
+									border-radius: 8px;
+									text-decoration: none;
+									font-size: 16px;
+									display: inline-block;
+									font-family: 'Hind Siliguri', sans-serif;
+								">
+								<i class="fab fa-whatsapp"></i> WhatsApp করুন<br><b>+880 1773 3350146</b>
+					</a>	
+				</p>
+              <!--  <div>
                     <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Legal</h4>
                     <ul class="space-y-2">
                         <li><a href="#" class="hover:underline">Sitemap</a></li>
-                        <li><a href="#" class="hover:underline">Privacy Policy</a></li>
+                        <li><a href="https://www.termsfeed.com/live/9ff25c7a-4653-4a9e-92ea-9354c08f5914" class="hover:underline">Privacy Policy</a></li>
                         <li><a href="#" class="hover:underline">Terms of Service</a></li>
                     </ul>
-                </div>
+                </div> -->
+				
                 <div>
                     <h4 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-600 dark:text-gray-400">
-                        <li><i class="fas fa-phone text-purple-500 mr-2"></i>+8801773350146</li>
+                        <li><i class="fas fa-phone text-purple-500 mr-2"></i>+880 1773 3350146</li>
                         <li><i class="fas fa-envelope text-purple-500 mr-2"></i>monoarulmurad@gmail.com</li>
+						<li><i class="fas fa-envelope text-purple-500 mr-2"></i>muradmonoarul@gmail.com</li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Murad's Journal. All rights reserved. | Designed with ❤️ by Monoarul Islam Murad</p>
+                <p>&copy; <span id="currentYear"> </span> Murad's Journal. All rights reserved. | Designed with ❤️ by Monoarul Islam Murad</p>
             </div>
         </div>
     </footer>
+    <!-- ফুটারে সাল স্ক্রিপ্ট -->
+				<script>
+				document.getElementById("currentYear").textContent = new Date().getFullYear();
+				</script>
 
     <!-- রিড মোডাল -->
     <div id="readModal" class="modal-overlay">
