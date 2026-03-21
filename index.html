@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -486,7 +487,7 @@
             }
         }
 
-        /* ক্যাটাগরি ম্যানেজমেন্ট স্টাইল */
+        /* ক্যাটাগরি ম্যানেজমেন্ট স্টাইল - হলুদ রং */
         #categoryList {
             display: flex;
             flex-wrap: wrap;
@@ -501,19 +502,19 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            background: linear-gradient(135deg, #667eea20, #764ba220);
+            background: linear-gradient(135deg, #FFD70020, #FFA50020);
             border-radius: 50px;
             padding: 5px 10px;
             transition: all 0.3s;
         }
 
         #categoryList .category-item:hover {
-            background: linear-gradient(135deg, #667eea40, #764ba240);
+            background: linear-gradient(135deg, #FFD70040, #FFA50040);
         }
 
         #categoryList .category-item span {
             font-size: 0.9rem;
-            color: #f093fb;
+            color: #FFD700;
             font-weight: 500;
         }
 
@@ -538,11 +539,11 @@
         }
 
         #categoryList .category-actions .edit-cat-btn {
-            color: #667eea;
+            color: #FFD700;
         }
 
         #categoryList .category-actions .edit-cat-btn:hover {
-            background: #667eea20;
+            background: #FFD70020;
             transform: scale(1.1);
         }
 
@@ -574,7 +575,7 @@
             flex: 1;
             padding: 0.8rem 1rem;
             border-radius: 50px;
-            border: 2px solid #f093fb;
+            border: 2px solid #FFD700;
             background: transparent;
             color: white;
             font-size: 1rem;
@@ -582,14 +583,14 @@
 
         .category-input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #FFA500;
         }
 
         .category-add-btn {
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #1a1a2e;
             font-weight: 600;
             border: none;
             cursor: pointer;
@@ -665,8 +666,7 @@
         }
 
         /* কন্টেন্ট কার্ডের ভিতরের টেক্সট কালার */
-        .content-card .text-gray-600,
-        .content-card .text-gray-600 span {
+        .content-card .meta-text {
             color: #ff69b4 !important;
         }
 
@@ -677,11 +677,6 @@
         /* লেখক পরিচিতির টেক্সট কালার */
         .author-bio-text {
             color: #c084fc !important;
-        }
-
-        /* মেটা তথ্যের কালার */
-        .meta-text {
-            color: #ff69b4 !important;
         }
     </style>
 </head>
@@ -984,7 +979,7 @@
                 
                 <!-- ক্যাটাগরি ম্যানেজমেন্ট সেকশন -->
                 <div class="mb-8 p-4 bg-purple-900/30 rounded-xl">
-                    <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center gap-2">
+                    <h3 class="text-lg font-semibold text-yellow-400 mb-3 flex items-center gap-2">
                         <i class="fas fa-tags"></i>
                         Manage Categories
                     </h3>
@@ -1126,6 +1121,7 @@
         let pendingAction = null;
         let pendingPostId = null;
         let pendingCategory = null;
+        let isAdminLoggedIn = false; // অ্যাডমিন লগিন স্ট্যাটাস
 
         // ======================
         // ডাটা লোড করার ফাংশন
@@ -1135,16 +1131,20 @@
                 const response = await fetch(SHEETDB_API_URL);
                 const data = await response.json();
                 
-                posts = data.map(row => ({
-                    id: parseInt(row.id) || Date.now(),
-                    title: row.title || '',
-                    category: row.category || 'বিবিধ',
-                    author: row.author || 'মনোয়ারুল ইসলাম মুরাদ',
-                    date: row.date || new Date().toISOString().split('T')[0],
-                    time: row.time || new Date().toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' }),
-                    content: row.content || '',
-                    pinned: row.pinned === 'TRUE' || row.pinned === 'true' || false
-                }));
+                if (Array.isArray(data) && data.length > 0) {
+                    posts = data.map(row => ({
+                        id: parseInt(row.id) || Date.now(),
+                        title: row.title || '',
+                        category: row.category || 'বিবিধ',
+                        author: row.author || 'মনোয়ারুল ইসলাম মুরাদ',
+                        date: row.date || new Date().toISOString().split('T')[0],
+                        time: row.time || new Date().toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' }),
+                        content: row.content || '',
+                        pinned: row.pinned === 'TRUE' || row.pinned === 'true' || false
+                    }));
+                } else {
+                    posts = [];
+                }
                 
                 updateCategoriesFromPosts();
                 displayPosts();
@@ -1155,6 +1155,10 @@
                 console.error('Error loading posts:', error);
                 posts = [];
                 categories = ['কবিতা', 'প্রবন্ধ', 'ছোট গল্প', 'সমসাময়িক ইস্যু', 'বিবিধ'];
+                updateCategoryButtons();
+                updateCategorySelects();
+                updateCategoryList();
+                displayPosts();
             }
         }
 
@@ -1653,10 +1657,11 @@
             };
 
             await addPost(newPost);
-            hideAdminModal();
+            // পোস্ট আপলোড করার পর ফর্ম রিসেট করুন কিন্তু মোডাল বন্ধ করবেন না
             event.target.reset();
             document.getElementById('useAutoDateTime').checked = true;
             alert('Post uploaded successfully!');
+            // মোডাল বন্ধ করা হচ্ছে না, শুধু ফর্ম রিসেট হচ্ছে
         }
 
         function saveChanges() {
@@ -1741,3 +1746,4 @@
     </script>
 </body>
 </html>
+```
