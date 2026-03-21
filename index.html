@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Murad's Journal</title>
     <!-- ফন্ট ও স্টাইল -->
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -78,7 +78,7 @@
             animation: gradient 5s ease infinite;
         }
 
-        /* ফ্লিপিং ক্লক - মোবাইল রেসপনসিভ */
+        /* ফ্লিপিং ক্লক */
         .flip-clock-container {
             display: flex;
             align-items: center;
@@ -92,32 +92,18 @@
             display: flex;
             gap: 8px;
             justify-content: center;
-            flex-wrap: wrap;
         }
 
         .flip-unit {
             background: linear-gradient(135deg, #667eea, #764ba2);
             border-radius: 12px;
-            padding: 8px 12px;
-            min-width: 65px;
+            padding: 10px;
+            min-width: 70px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             position: relative;
             overflow: hidden;
             transform-style: preserve-3d;
-        }
-
-        @media (max-width: 640px) {
-            .flip-unit {
-                min-width: 55px;
-                padding: 6px 8px;
-            }
-            .flip-number {
-                font-size: 1.5rem;
-            }
-            .flip-label {
-                font-size: 0.6rem;
-            }
         }
 
         .flip-unit::before {
@@ -172,12 +158,6 @@
 
         .content-card:hover .admin-controls {
             opacity: 1;
-        }
-
-        @media (max-width: 768px) {
-            .admin-controls {
-                opacity: 0.7;
-            }
         }
 
         .admin-btn {
@@ -248,25 +228,23 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        /* সার্চ বার - মোবাইল রেসপনসিভ */
+        /* সার্চ বার */
         .search-container {
             max-width: 600px;
             margin: 2rem auto;
             position: relative;
-            width: 100%;
-            padding: 0 10px;
         }
 
         .search-input {
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 1.2rem 1.5rem;
             padding-right: 3.5rem;
             border-radius: 50px;
             border: 2px solid rgba(255,255,255,0.3);
             background: rgba(255,255,255,0.1);
             backdrop-filter: blur(10px);
             color: #ffffff;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
@@ -284,11 +262,11 @@
 
         .search-btn {
             position: absolute;
-            right: 15px;
+            right: 5px;
             top: 50%;
             transform: translateY(-50%);
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: linear-gradient(135deg, #667eea, #764ba2);
             border: none;
@@ -329,21 +307,12 @@
             align-items: center;
             gap: 8px;
             background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 5px 12px 5px 10px;
+            padding: 5px 15px 5px 10px;
             border-radius: 50px;
             border: 2px solid rgba(255,255,255,0.2);
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-        }
-
-        @media (max-width: 640px) {
-            .admin-panel-btn span {
-                display: none;
-            }
-            .admin-panel-btn {
-                padding: 5px 8px;
-            }
         }
 
         .admin-panel-btn:hover {
@@ -352,8 +321,8 @@
         }
 
         .admin-panel-btn img {
-            width: 32px;
-            height: 32px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             border: 2px solid white;
             object-fit: cover;
@@ -373,17 +342,17 @@
         /* শুরু করুন বাটন */
         .start-btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             background: linear-gradient(135deg, #f093fb, #f5576c);
             color: white;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.2rem;
             border: none;
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
-            margin-top: 2rem;
+            margin-top: 3rem;
         }
 
         .start-btn:hover {
@@ -393,20 +362,11 @@
 
         /* ক্যাটাগরি বাটন */
         .cat-btn {
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 2rem;
             border-radius: 50px;
             font-weight: 600;
             transition: all 0.3s;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            font-size: 0.9rem;
-            white-space: nowrap;
-        }
-
-        @media (max-width: 640px) {
-            .cat-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
         }
 
         .cat-btn.active {
@@ -448,9 +408,9 @@
             right: 1rem;
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: white;
-            padding: 0.2rem 0.6rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 50px;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             font-weight: 600;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             z-index: 10;
@@ -463,16 +423,6 @@
             border-right: 3px solid #667eea;
             animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
             color: #ffffff;
-            font-size: 1rem;
-        }
-
-        @media (max-width: 640px) {
-            .typing-effect {
-                font-size: 0.9rem;
-                white-space: normal;
-                animation: none;
-                border-right: none;
-            }
         }
 
         @keyframes typing {
@@ -521,7 +471,7 @@
         .modal-content {
             background: #1a1a2e;
             border-radius: 28px;
-            padding: 1.5rem;
+            padding: 2rem;
             color: #fff;
         }
 
@@ -551,19 +501,19 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            background: linear-gradient(135deg, #FFD70020, #FFA50020);
+            background: linear-gradient(135deg, #667eea20, #764ba220);
             border-radius: 50px;
             padding: 5px 10px;
             transition: all 0.3s;
         }
 
         #categoryList .category-item:hover {
-            background: linear-gradient(135deg, #FFD70040, #FFA50040);
+            background: linear-gradient(135deg, #667eea40, #764ba240);
         }
 
         #categoryList .category-item span {
-            font-size: 0.85rem;
-            color: #FFD700;
+            font-size: 0.9rem;
+            color: #f093fb;
             font-weight: 500;
         }
 
@@ -577,22 +527,22 @@
             border: none;
             cursor: pointer;
             padding: 2px 5px;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             transition: all 0.3s;
             border-radius: 50%;
-            width: 22px;
-            height: 22px;
+            width: 24px;
+            height: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
         #categoryList .category-actions .edit-cat-btn {
-            color: #FFD700;
+            color: #667eea;
         }
 
         #categoryList .category-actions .edit-cat-btn:hover {
-            background: #FFD70020;
+            background: #667eea20;
             transform: scale(1.1);
         }
 
@@ -606,7 +556,7 @@
         }
 
         .warning-text {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: #f87171;
             margin-top: 0.5rem;
             display: flex;
@@ -618,29 +568,28 @@
             display: flex;
             gap: 10px;
             margin-top: 10px;
-            flex-wrap: wrap;
         }
 
         .category-input {
             flex: 1;
-            padding: 0.6rem 1rem;
+            padding: 0.8rem 1rem;
             border-radius: 50px;
-            border: 2px solid #FFD700;
+            border: 2px solid #f093fb;
             background: transparent;
             color: white;
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
         .category-input:focus {
             outline: none;
-            border-color: #FFA500;
+            border-color: #667eea;
         }
 
         .category-add-btn {
-            padding: 0.6rem 1.2rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #1a1a2e;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
             font-weight: 600;
             border: none;
             cursor: pointer;
@@ -657,8 +606,8 @@
             background: linear-gradient(135deg, #667eea20, #764ba220);
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 2rem 0 1rem;
-            margin-top: 3rem;
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
         }
 
         .footer a {
@@ -672,30 +621,27 @@
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 1.5rem;
-            padding-top: 1rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
             text-align: center;
             color: #aaa;
-            font-size: 0.8rem;
         }
 
         /* এডমিন প্যানেল বাটন গ্রুপ */
         .admin-btn-group {
             display: flex;
-            gap: 0.8rem;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .admin-btn-group button {
             flex: 1;
-            padding: 0.8rem;
+            padding: 1rem;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             border: none;
-            font-size: 0.9rem;
         }
 
         .upload-btn {
@@ -719,7 +665,8 @@
         }
 
         /* কন্টেন্ট কার্ডের ভিতরের টেক্সট কালার */
-        .content-card .meta-text {
+        .content-card .text-gray-600,
+        .content-card .text-gray-600 span {
             color: #ff69b4 !important;
         }
 
@@ -732,23 +679,9 @@
             color: #c084fc !important;
         }
 
-        /* হিরো সেকশনের ক্লক এবং বাটন র‍্যাপার */
-        .hero-flex-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        @media (max-width: 640px) {
-            .hero-flex-wrapper {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .flip-clock-container {
-                margin: 0.5rem 0;
-            }
+        /* মেটা তথ্যের কালার */
+        .meta-text {
+            color: #ff69b4 !important;
         }
     </style>
 </head>
@@ -761,12 +694,12 @@
         <div class="container mx-auto px-4 sm:px-6 py-3">
             <div class="flex items-center justify-between">
                 <!-- লোগো + কলম আইকন -->
-                <a href="#" class="text-2xl sm:text-4xl font-bold gradient-text flex items-center gap-2">
-                    <i class="fas fa-pen-fancy text-xl sm:text-3xl text-purple-500"></i>
+                <a href="#" class="text-4xl font-bold gradient-text flex items-center gap-2">
+                    <i class="fas fa-pen-fancy text-3xl text-purple-500"></i>
                     <span>মুরাদ</span>
                 </a>
                 
-                <div class="flex items-center gap-3">
+                <div class="flex items-center gap-4">
                     <!-- এডমিন বাটন - হোয়াইট গ্লো -->
                     <div class="admin-panel-btn white-glow" onclick="showLoginModal()">
                         <i class="fas fa-lock"></i>
@@ -780,22 +713,22 @@
 
     <!-- হিরো সেকশন -->
     <section class="hero-section">
-        <div class="container mx-auto px-4 text-center relative z-10">
-            <h1 class="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 gradient-text floating" data-aos="fade-up">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 gradient-text floating" data-aos="fade-up">
                 মনোয়ারুল ইসলাম মুরাদ
             </h1>
-            <div class="typing-effect text-base sm:text-xl md:text-3xl mb-6 sm:mb-8 mx-auto max-w-3xl" data-aos="fade-up" data-aos-delay="500">
+            <div class="typing-effect text-xl md:text-3xl mb-8 mx-auto max-w-3xl" data-aos="fade-up" data-aos-delay="500">
                 শব্দের মায়াজালে অন্তরের সন্ধানে...
             </div>
             
             <!-- ফ্লিপিং ক্লক + ছোট ক্যাটাগরি বাটন -->
-            <div class="hero-flex-wrapper" data-aos="fade-up" data-aos-delay="800">
+            <div class="flex items-center justify-center gap-4 flex-wrap" data-aos="fade-up" data-aos-delay="800">
                 <div class="flip-clock-container !m-0">
-                    <div class="text-white text-base sm:text-lg font-semibold">এখন সময়ঃ</div>
+                    <div class="text-white text-lg font-semibold">এখন সময়ঃ</div>
                     <div class="flip-clock" id="flipClock"></div>
                 </div>
                 <button onclick="scrollToCategories()" class="category-nav-btn-small">
-                    <i class="fas fa-book mr-1 sm:mr-2"></i>ক্যাটাগরি
+                    <i class="fas fa-book mr-2"></i>ক্যাটাগরি
                 </button> 
             </div>
 
@@ -808,7 +741,7 @@
             </div>
 
             <!-- শুরু করুন বাটন - হোয়াইট গ্লো -->
-            <div class="mt-8 sm:mt-12 md:mt-16" data-aos="fade-up" data-aos-delay="1200">
+            <div class="mt-12 md:mt-16" data-aos="fade-up" data-aos-delay="1200">
                 <button onclick="scrollToCategories()" class="start-btn white-glow">
                     <i class="fas fa-arrow-down mr-2"></i>শুরু করুন
                 </button>
@@ -817,65 +750,65 @@
         
         <!-- নিচের তীর -->
         <div class="absolute bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <i class="fas fa-chevron-down text-xl sm:text-2xl text-white"></i>
+            <i class="fas fa-chevron-down text-2xl text-white"></i>
         </div>
     </section>
 
     <!-- ক্যাটাগরি বাটন -->
-    <section id="categories" class="py-12 sm:py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8 sm:mb-12 gradient-text" data-aos="fade-up">আপনি কি পড়তে চান?</h2>
-            <div id="categoryButtons" class="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8" data-aos="fade-up" data-aos-delay="200">
+    <section id="categories" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text" data-aos="fade-up">আপনি কি পড়তে চান?</h2>
+            <div id="categoryButtons" class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="200">
                 <!-- ডাইনামিক ক্যাটাগরি বাটন জাভাস্ক্রিপ্ট দ্বারা লোড হবে -->
             </div>
         </div>
     </section>
 
     <!-- কন্টেন্ট গ্রিড -->
-    <section class="py-12 sm:py-20 bg-gradient-to-b from-transparent to-purple-900/20">
-        <div class="container mx-auto px-4">
-            <div id="contentGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
+    <section class="py-20 bg-gradient-to-b from-transparent to-purple-900/20">
+        <div class="container mx-auto px-6">
+            <div id="contentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- ডাইনামিক কন্টেন্ট -->
             </div>
         </div>
     </section>
 
     <!-- লেখক পরিচিতি -->
-    <section class="py-12 sm:py-20 relative">
-        <div class="container mx-auto px-4">
-            <div class="glass-effect rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12" data-aos="fade-up">
-                <div class="flex flex-col md:flex-row items-center gap-6 sm:gap-8 md:gap-12">
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="glass-effect rounded-3xl p-8 md:p-12" data-aos="fade-up">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
                     <div class="md:w-1/3 relative" data-aos="fade-right">
                         <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-3xl opacity-50"></div>
-                        <img src="https://i.ibb.co.com/Fk4JD9yd/Profile.jpg" alt="মনোয়ারুল ইসলাম মুরাদ" class="w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white relative z-10 floating mx-auto">
+                        <img src="https://i.ibb.co.com/Fk4JD9yd/Profile.jpg" alt="মনোয়ারুল ইসলাম মুরাদ" class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover border-4 border-white relative z-10 floating mx-auto">
                     </div>
                     <div class="md:w-2/3 text-center md:text-left" data-aos="fade-left">
-                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 gradient-text">মনোয়ারুল ইসলাম মুরাদ</h2>
-                        <p class="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 author-bio-text bengali-font leading-relaxed">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4 gradient-text">মনোয়ারুল ইসলাম মুরাদ</h2>
+                        <p class="text-base md:text-lg mb-6 author-bio-text bengali-font leading-relaxed">
                             বর্তমানে জগন্নাথ বিশ্ববিদ্যালয়ে অধ্যায়নরত একজন ছাত্র এবং অনুসন্ধিৎসু গবেষক। সমাজ ও মানবজীবনকে বোঝার আগ্রহ থেকেই আমার পড়াশোনা ও চিন্তার বিস্তার—সমাজবিজ্ঞান, দর্শন, অর্থনীতি, রাষ্ট্রবিজ্ঞান, নৃবিজ্ঞান, সাহিত্য ও চলচ্চিত্র—বিভিন্ন শাখার সংযোগস্থলে আমার কাজ ও কৌতূহল গড়ে উঠছে।
                         </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                             <div class="flex items-center justify-center md:justify-start space-x-2">
                                 <i class="fas fa-phone text-purple-500"></i>
-                                <span class="text-gray-300 text-sm sm:text-base"><a href="tel:+8801773350146" target="_blank" class="text-gray-300 hover:text-purple-400">+880 1773 3350146</a></span>
+                                <span class="text-gray-300"><a href="tel:+8801773350146" target="_blank" class="text-gray-300 hover:text-purple-400">+880 1773 3350146</a></span>
                             </div>
                             <div class="flex items-center justify-center md:justify-start space-x-2">
                                 <i class="fas fa-envelope text-purple-500"></i>
-                                <span class="text-gray-300 text-sm sm:text-base">monoarulmurad@gmail.com</span>
+                                <span class="text-gray-300">monoarulmurad@gmail.com</span>
                             </div>
                         </div>
-                        <div class="flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start">
-                            <a href="https://www.facebook.com/muradmonoarul/" target="_blank" class="social-icon w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
-                                <i class="fab fa-facebook-f text-sm sm:text-base"></i>
+                        <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                            <a href="https://www.facebook.com/muradmonoarul/" target="_blank" class="social-icon w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="https://www.instagram.com/murad.mp4/" target="_blank" class="social-icon w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
-                                <i class="fab fa-instagram text-sm sm:text-base"></i>
+                            <a href="https://www.instagram.com/murad.mp4/" target="_blank" class="social-icon w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://www.linkedin.com/in/monoarulmurad/" target="_blank" class="social-icon w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
-                                <i class="fab fa-linkedin-in text-sm sm:text-base"></i>
+                            <a href="https://www.linkedin.com/in/monoarulmurad/" target="_blank" class="social-icon w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="https://www.youtube.com/@MuradMonoarul" target="_blank" class="social-icon w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
-                                <i class="fab fa-youtube text-sm sm:text-base"></i>
+                            <a href="https://www.youtube.com/@MuradMonoarul" target="_blank" class="social-icon w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-youtube"></i>
                             </a>
                         </div>
                     </div>
@@ -886,28 +819,28 @@
 
     <!-- ফুটার -->
     <footer class="footer">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
-                    <h3 class="text-lg sm:text-xl font-bold gradient-text mb-2 sm:mb-4">Murad's Journal</h3>
-                    <p class="text-gray-400 text-sm">শব্দের মায়াজালে অন্তরের সন্ধানে...</p>
+                    <h3 class="text-xl font-bold gradient-text mb-4">Murad's Journal</h3>
+                    <p class="text-gray-400">শব্দের মায়াজালে অন্তরের সন্ধানে...</p>
                 </div>
                 <div>
-                    <h4 class="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-4">Quick Links</h4>
-                    <ul class="space-y-1 sm:space-y-2 text-sm">
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
                         <li><a href="#" class="hover:underline">হোম</a></li>
                         <li><a href="#categories" onclick="scrollToCategories()" class="hover:underline">ক্যাটাগরি</a></li>
                         <li><a href="https://www.facebook.com/muradmonoarul/" target="_blank" class="hover:underline">আমার পরিচয়</a></li>
                     </ul>
                 </div>
-                <div>
-                    <a href="https://wa.me/8801773350146?text=Hi%20MURAD%20!" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] text-white px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-sm hover:scale-105 transition-transform">
+                <p>
+                    <a href="https://wa.me/8801773350146?text=Hi%20MURAD%20!" target="_blank" style="background: #25D366; color: white; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-size: 16px; display: inline-block; font-family: 'Hind Siliguri', sans-serif;">
                         <i class="fab fa-whatsapp"></i> WhatsApp করুন<br><b>+880 1773 3350146</b>
                     </a>	
-                </div>
+                </p>
                 <div>
-                    <h4 class="text-base sm:text-lg font-semibold text-white mb-2 sm:mb-4">Contact</h4>
-                    <ul class="space-y-1 sm:space-y-2 text-gray-400 text-sm">
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
                         <li><i class="fas fa-phone text-purple-500 mr-2"></i>+880 1773 3350146</li>
                         <li><i class="fas fa-envelope text-purple-500 mr-2"></i>monoarulmurad@gmail.com</li>
                         <li><i class="fas fa-envelope text-purple-500 mr-2"></i>muradmonoarul@gmail.com</li>
@@ -928,19 +861,19 @@
     <div id="readModal" class="modal-overlay">
         <div class="modal-card">
             <div class="modal-content">
-                <div class="flex justify-between items-center mb-4 sm:mb-6">
-                    <h2 id="modalTitle" class="text-xl sm:text-2xl md:text-3xl font-bold gradient-text"></h2>
-                    <button onclick="closeModal()" class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:scale-110 transition-transform">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 id="modalTitle" class="text-2xl md:text-3xl font-bold gradient-text"></h2>
+                    <button onclick="closeModal()" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:scale-110 transition-transform">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                <div class="mb-4 sm:mb-6 flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm md:text-base text-gray-300">
-                    <span><i class="fas fa-user mr-1 sm:mr-2 text-purple-500"></i><span id="modalAuthor"></span></span>
-                    <span><i class="fas fa-calendar mr-1 sm:mr-2 text-purple-500"></i><span id="modalDate"></span></span>
-                    <span><i class="fas fa-clock mr-1 sm:mr-2 text-purple-500"></i><span id="modalTime"></span></span>
-                    <span><i class="fas fa-tag mr-1 sm:mr-2 text-purple-500"></i><span id="modalCategory"></span></span>
+                <div class="mb-6 flex flex-wrap gap-4 text-sm md:text-base text-gray-300">
+                    <span><i class="fas fa-user mr-2 text-purple-500"></i><span id="modalAuthor"></span></span>
+                    <span><i class="fas fa-calendar mr-2 text-purple-500"></i><span id="modalDate"></span></span>
+                    <span><i class="fas fa-clock mr-2 text-purple-500"></i><span id="modalTime"></span></span>
+                    <span><i class="fas fa-tag mr-2 text-purple-500"></i><span id="modalCategory"></span></span>
                 </div>
-                <div id="modalContent" class="bengali-font text-sm sm:text-base md:text-lg leading-relaxed text-gray-200"></div>
+                <div id="modalContent" class="bengali-font text-base md:text-lg leading-relaxed text-gray-200"></div>
             </div>
         </div>
     </div>
@@ -949,17 +882,17 @@
     <div id="loginModal" class="modal-overlay">
         <div class="modal-card max-w-md">
             <div class="modal-content">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 gradient-text">Admin Panel</h2>
-                <div class="space-y-4 sm:space-y-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Admin Panel</h2>
+                <div class="space-y-6">
                     <div>
-                        <label class="block text-gray-300 mb-2 text-sm">Username</label>
-                        <input type="text" id="username" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors text-white">
+                        <label class="block text-gray-300 mb-2">Username</label>
+                        <input type="text" id="username" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-300 mb-2 text-sm">Password</label>
-                        <input type="password" id="password" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors text-white">
+                        <label class="block text-gray-300 mb-2">Password</label>
+                        <input type="password" id="password" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors text-white">
                     </div>
-                    <button onclick="handleLogin()" class="w-full py-2 sm:py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
+                    <button onclick="handleLogin()" class="w-full py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
                         Log In
                     </button>
                 </div>
@@ -971,17 +904,17 @@
     <div id="verifyModal" class="modal-overlay">
         <div class="modal-card max-w-md">
             <div class="modal-content">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 gradient-text">Admin Verification</h2>
-                <div class="space-y-4 sm:space-y-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Admin Verification</h2>
+                <div class="space-y-6">
                     <div>
-                        <label class="block text-gray-300 mb-2 text-sm">Username</label>
-                        <input type="text" id="verifyUsername" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors text-white">
+                        <label class="block text-gray-300 mb-2">Username</label>
+                        <input type="text" id="verifyUsername" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors text-white">
                     </div>
                     <div>
-                        <label class="block text-gray-300 mb-2 text-sm">Password</label>
-                        <input type="password" id="verifyPassword" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors text-white">
+                        <label class="block text-gray-300 mb-2">Password</label>
+                        <input type="password" id="verifyPassword" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent focus:outline-none focus:border-purple-500 transition-colors text-white">
                     </div>
-                    <button onclick="verifyAndProceed()" class="w-full py-2 sm:py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
+                    <button onclick="verifyAndProceed()" class="w-full py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
                         Confirm
                     </button>
                 </div>
@@ -993,47 +926,47 @@
     <div id="editModal" class="modal-overlay">
         <div class="modal-card max-w-2xl">
             <div class="modal-content">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 gradient-text">Edit Post</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Edit Post</h2>
                 <form id="editForm" onsubmit="handleEdit(event)">
                     <input type="hidden" id="editId">
-                    <div class="space-y-4 sm:space-y-6">
+                    <div class="space-y-6">
                         <div>
-                            <label class="block text-gray-300 mb-2 text-sm">Title</label>
-                            <input type="text" id="editTitle" required class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                            <label class="block text-gray-300 mb-2">Title</label>
+                            <input type="text" id="editTitle" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                         </div>
                         <div>
-                            <label class="block text-gray-300 mb-2 text-sm">Category</label>
-                            <select id="editCategory" required class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                            <label class="block text-gray-300 mb-2">Category</label>
+                            <select id="editCategory" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                                 <!-- ডাইনামিক ক্যাটাগরি অপশন জাভাস্ক্রিপ্ট দ্বারা লোড হবে -->
                             </select>
                         </div>
                         <div>
-                            <label class="block text-gray-300 mb-2 text-sm">Author</label>
-                            <input type="text" id="editAuthor" required class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                            <label class="block text-gray-300 mb-2">Author</label>
+                            <input type="text" id="editAuthor" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                         </div>
-                        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                        <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-gray-300 mb-2 text-sm">Date</label>
-                                <input type="date" id="editDate" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                                <label class="block text-gray-300 mb-2">Date</label>
+                                <input type="date" id="editDate" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                             </div>
                             <div>
-                                <label class="block text-gray-300 mb-2 text-sm">Time</label>
-                                <input type="time" id="editTime" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                                <label class="block text-gray-300 mb-2">Time</label>
+                                <input type="time" id="editTime" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <input type="checkbox" id="useCurrentTime" onclick="toggleDateTime()">
-                            <label class="text-gray-300 text-sm">Use current date & time</label>
+                            <label class="text-gray-300">Use current date & time</label>
                         </div>
                         <div>
-                            <label class="block text-gray-300 mb-2 text-sm">Content</label>
-                            <textarea id="editContent" required rows="6" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white"></textarea>
+                            <label class="block text-gray-300 mb-2">Content</label>
+                            <textarea id="editContent" required rows="8" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white"></textarea>
                         </div>
-                        <div class="flex gap-3 sm:gap-4">
-                            <button type="submit" class="flex-1 py-2 sm:py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
+                        <div class="flex gap-4">
+                            <button type="submit" class="flex-1 py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
                                 Update
                             </button>
-                            <button type="button" onclick="closeEditModal()" class="flex-1 py-2 sm:py-3 rounded-lg bg-gray-600 text-white font-semibold hover:scale-105 transition-transform">
+                            <button type="button" onclick="closeEditModal()" class="flex-1 py-4 rounded-lg bg-gray-600 text-white font-semibold hover:scale-105 transition-transform">
                                 Cancel
                             </button>
                         </div>
@@ -1047,18 +980,18 @@
     <div id="adminModal" class="modal-overlay">
         <div class="modal-card max-w-2xl">
             <div class="modal-content">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 gradient-text">Upload New Post</h2>
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Upload New Post</h2>
                 
                 <!-- ক্যাটাগরি ম্যানেজমেন্ট সেকশন -->
-                <div class="mb-6 sm:mb-8 p-3 sm:p-4 bg-purple-900/30 rounded-xl">
-                    <h3 class="text-base sm:text-lg font-semibold text-yellow-400 mb-2 sm:mb-3 flex items-center gap-2">
+                <div class="mb-8 p-4 bg-purple-900/30 rounded-xl">
+                    <h3 class="text-lg font-semibold text-purple-400 mb-3 flex items-center gap-2">
                         <i class="fas fa-tags"></i>
                         Manage Categories
                     </h3>
                     
                     <!-- এক্সিস্টিং ক্যাটাগরি দেখানোর জন্য -->
-                    <div class="mb-3 sm:mb-4">
-                        <label class="block text-gray-300 mb-2 text-xs sm:text-sm font-medium">Current Categories:</label>
+                    <div class="mb-4">
+                        <label class="block text-gray-300 mb-2 text-sm font-medium">Current Categories:</label>
                         <div id="categoryList" class="flex flex-wrap gap-2 mb-3">
                             <!-- ডাইনামিক ক্যাটাগরি লিস্ট জাভাস্ক্রিপ্ট দ্বারা লোড হবে -->
                         </div>
@@ -1068,7 +1001,7 @@
                     <div class="category-input-group">
                         <input type="text" id="newCategory" class="category-input" placeholder="নতুন ক্যাটাগরির নাম">
                         <button type="button" onclick="addNewCategory()" class="category-add-btn">
-                            <i class="fas fa-plus mr-1 sm:mr-2"></i>Add
+                            <i class="fas fa-plus mr-2"></i>Add
                         </button>
                     </div>
                     
@@ -1080,51 +1013,51 @@
                 </div>
 
                 <form id="uploadForm" onsubmit="handleUpload(event)">
-                    <div class="space-y-4 sm:space-y-6">
+                    <div class="space-y-6">
                         <div>
-                            <label class="block text-gray-300 mb-2 text-sm">Title</label>
-                            <input type="text" id="title" required class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                            <label class="block text-gray-300 mb-2">Title</label>
+                            <input type="text" id="title" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                         </div>
                         <div>
-                            <label class="block text-gray-300 mb-2 text-sm">Category</label>
-                            <select id="category" required class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                            <label class="block text-gray-300 mb-2">Category</label>
+                            <select id="category" required class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                                 <option value="">Select</option>
                                 <!-- ডাইনামিক ক্যাটাগরি অপশন জাভাস্ক্রিপ্ট দ্বারা লোড হবে -->
                             </select>
                         </div>
                         <div>
-                            <label class="block text-gray-300 mb-2 text-sm">Author</label>
-                            <input type="text" id="author" required value="মনোয়ারুল ইসলাম মুরাদ" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                            <label class="block text-gray-300 mb-2">Author</label>
+                            <input type="text" id="author" required value="মনোয়ারুল ইসলাম মুরাদ" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                         </div>
-                        <div class="grid grid-cols-2 gap-3 sm:gap-4">
+                        <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-gray-300 mb-2 text-sm">Date (Optional)</label>
-                                <input type="date" id="postDate" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                                <label class="block text-gray-300 mb-2">Date (Optional)</label>
+                                <input type="date" id="postDate" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                             </div>
                             <div>
-                                <label class="block text-gray-300 mb-2 text-sm">Time (Optional)</label>
-                                <input type="time" id="postTime" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
+                                <label class="block text-gray-300 mb-2">Time (Optional)</label>
+                                <input type="time" id="postTime" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white">
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <input type="checkbox" id="useAutoDateTime" checked>
-                            <label class="text-gray-300 text-sm">Use automatic date & time</label>
+                            <label class="text-gray-300">Use automatic date & time</label>
                         </div>
                         <div>
-                            <label class="block text-gray-300 mb-2 text-sm">Content</label>
-                            <textarea id="content" required rows="6" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white"></textarea>
+                            <label class="block text-gray-300 mb-2">Content</label>
+                            <textarea id="content" required rows="8" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white"></textarea>
                         </div>
                         
                         <!-- এডমিন বাটন গ্রুপ -->
                         <div class="admin-btn-group">
                             <button type="submit" class="upload-btn">
-                                <i class="fas fa-cloud-upload-alt mr-1 sm:mr-2"></i>Upload
+                                <i class="fas fa-cloud-upload-alt mr-2"></i>Upload
                             </button>
                             <button type="button" onclick="saveChanges()" class="save-btn">
-                                <i class="fas fa-save mr-1 sm:mr-2"></i>Save
+                                <i class="fas fa-save mr-2"></i>Save
                             </button>
                             <button type="button" onclick="logout()" class="logout-btn">
-                                <i class="fas fa-sign-out-alt mr-1 sm:mr-2"></i>Log out
+                                <i class="fas fa-sign-out-alt mr-2"></i>Log out
                             </button>
                         </div>
                     </div>
@@ -1137,18 +1070,18 @@
     <div id="editCategoryModal" class="modal-overlay">
         <div class="modal-card max-w-md">
             <div class="modal-content">
-                <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-center mb-6 sm:mb-8 gradient-text">Edit Category</h2>
-                <div class="space-y-4 sm:space-y-6">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-8 gradient-text">Edit Category</h2>
+                <div class="space-y-6">
                     <div>
-                        <label class="block text-gray-300 mb-2 text-sm">Category Name</label>
-                        <input type="text" id="editCategoryName" class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white focus:outline-none focus:border-purple-500">
+                        <label class="block text-gray-300 mb-2">Category Name</label>
+                        <input type="text" id="editCategoryName" class="w-full px-4 py-3 rounded-lg border-2 border-purple-700 bg-transparent text-white focus:outline-none focus:border-purple-500">
                     </div>
                     <input type="hidden" id="editCategoryOldName">
-                    <div class="flex gap-3 sm:gap-4">
-                        <button onclick="confirmEditCategory()" class="flex-1 py-2 sm:py-3 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
+                    <div class="flex gap-4">
+                        <button onclick="confirmEditCategory()" class="flex-1 py-4 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform">
                             Update
                         </button>
-                        <button onclick="closeEditCategoryModal()" class="flex-1 py-2 sm:py-3 rounded-lg bg-gray-600 text-white font-semibold hover:scale-105 transition-transform">
+                        <button onclick="closeEditCategoryModal()" class="flex-1 py-4 rounded-lg bg-gray-600 text-white font-semibold hover:scale-105 transition-transform">
                             Cancel
                         </button>
                     </div>
@@ -1202,20 +1135,16 @@
                 const response = await fetch(SHEETDB_API_URL);
                 const data = await response.json();
                 
-                if (Array.isArray(data) && data.length > 0) {
-                    posts = data.map(row => ({
-                        id: parseInt(row.id) || Date.now(),
-                        title: row.title || '',
-                        category: row.category || 'বিবিধ',
-                        author: row.author || 'মনোয়ারুল ইসলাম মুরাদ',
-                        date: row.date || new Date().toISOString().split('T')[0],
-                        time: row.time || new Date().toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' }),
-                        content: row.content || '',
-                        pinned: row.pinned === 'TRUE' || row.pinned === 'true' || false
-                    }));
-                } else {
-                    posts = [];
-                }
+                posts = data.map(row => ({
+                    id: parseInt(row.id) || Date.now(),
+                    title: row.title || '',
+                    category: row.category || 'বিবিধ',
+                    author: row.author || 'মনোয়ারুল ইসলাম মুরাদ',
+                    date: row.date || new Date().toISOString().split('T')[0],
+                    time: row.time || new Date().toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' }),
+                    content: row.content || '',
+                    pinned: row.pinned === 'TRUE' || row.pinned === 'true' || false
+                }));
                 
                 updateCategoriesFromPosts();
                 displayPosts();
@@ -1226,10 +1155,6 @@
                 console.error('Error loading posts:', error);
                 posts = [];
                 categories = ['কবিতা', 'প্রবন্ধ', 'ছোট গল্প', 'সমসাময়িক ইস্যু', 'বিবিধ'];
-                updateCategoryButtons();
-                updateCategorySelects();
-                updateCategoryList();
-                displayPosts();
             }
         }
 
@@ -1348,9 +1273,9 @@
             const categoryContainer = document.getElementById('categoryButtons');
             if (categoryContainer) {
                 categoryContainer.innerHTML = `
-                    <button onclick="filterContent('সব')" class="cat-btn px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-110 transition-all shadow-lg active">সব</button>
+                    <button onclick="filterContent('সব')" class="cat-btn px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-110 transition-all shadow-lg active">সব</button>
                     ${categories.map(cat => `
-                        <button onclick="filterContent('${cat}')" class="cat-btn px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-gray-800 text-purple-400 font-semibold hover:scale-110 transition-all shadow-lg">${cat}</button>
+                        <button onclick="filterContent('${cat}')" class="cat-btn px-6 py-3 rounded-full bg-gray-800 text-purple-400 font-semibold hover:scale-110 transition-all shadow-lg">${cat}</button>
                     `).join('')}
                 `;
             }
@@ -1391,50 +1316,40 @@
             }
         }
 
-        // পোস্ট সাজানোর ফাংশন - তারিখ অনুযায়ী নতুন প্রথমে
-        function sortPostsByDate(postsArray) {
-            return [...postsArray].sort((a, b) => {
-                const dateA = new Date(a.date + ' ' + a.time);
-                const dateB = new Date(b.date + ' ' + b.time);
-                return dateB - dateA; // নতুন প্রথমে
-            });
-        }
-
         function displayFilteredPosts(filteredPosts) {
             const contentGrid = document.getElementById('contentGrid');
             
-            // পিন করা পোস্ট প্রথমে, তারপর তারিখ অনুযায়ী নতুন প্রথমে সাজানো
-            const sortedPosts = [...filteredPosts].sort((a, b) => {
+            filteredPosts.sort((a, b) => {
                 if (a.pinned && !b.pinned) return -1;
                 if (!a.pinned && b.pinned) return 1;
                 
                 const dateA = new Date(a.date + ' ' + a.time);
                 const dateB = new Date(b.date + ' ' + b.time);
-                return dateB - dateA; // নতুন প্রথমে
+                return dateB - dateA;
             });
             
-            if (sortedPosts.length === 0) {
-                contentGrid.innerHTML = '<div class="col-span-full text-center py-20"><div class="text-xl sm:text-2xl text-gray-400">কোনো লেখা পাওয়া যায়নি</div></div>';
+            if (filteredPosts.length === 0) {
+                contentGrid.innerHTML = '<div class="col-span-full text-center py-20"><div class="text-2xl text-gray-400">কোনো লেখা পাওয়া যায়নি</div></div>';
                 return;
             }
 
-            contentGrid.innerHTML = sortedPosts.map(post => `
-                <div class="relative glass-effect rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:scale-105 transition-all duration-500 h-full flex flex-col content-card ${post.pinned ? 'pinned' : ''}" data-aos="fade-up">
+            contentGrid.innerHTML = filteredPosts.map(post => `
+                <div class="relative glass-effect rounded-2xl p-6 hover:scale-105 transition-all duration-500 h-full flex flex-col content-card ${post.pinned ? 'pinned' : ''}" data-aos="fade-up">
                     ${post.pinned ? '<div class="pinned-badge"><i class="fas fa-thumbtack mr-1"></i>পিন করা</div>' : ''}
-                    <span class="inline-block px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-xs sm:text-sm font-semibold mb-3 sm:mb-4 w-fit">
+                    <span class="inline-block px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-semibold mb-4 w-fit">
                         ${post.category}
                     </span>
-                    <h3 class="text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 gradient-text">${post.title}</h3>
-                    <div class="flex flex-wrap gap-2 sm:gap-4 text-xs sm:text-sm mb-3 sm:mb-4 meta-text">
+                    <h3 class="text-2xl font-bold mb-3 gradient-text">${post.title}</h3>
+                    <div class="flex flex-wrap gap-4 text-sm mb-4 meta-text">
                         <span><i class="fas fa-user mr-1"></i>${post.author}</span>
                         <span><i class="fas fa-calendar mr-1"></i>${post.date}</span>
                         <span><i class="fas fa-clock mr-1"></i>${post.time}</span>
                     </div>
-                    <p class="text-white text-sm sm:text-base mb-4 sm:mb-6 flex-grow">
+                    <p class="text-white mb-6 flex-grow">
                         ${post.content.substring(0, 100)}...
                     </p>
-                    <button onclick='showFullPost(${JSON.stringify(post).replace(/'/g, "\\'")})' class="px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform w-fit mb-10 sm:mb-12 text-sm sm:text-base">
-                        <i class="fas fa-book-open mr-1 sm:mr-2"></i>বিস্তারিত পড়ুন
+                    <button onclick='showFullPost(${JSON.stringify(post).replace(/'/g, "\\'")})' class="px-6 py-3 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-semibold hover:scale-105 transition-transform w-fit mb-12">
+                        <i class="fas fa-book-open mr-2"></i>বিস্তারিত পড়ুন
                     </button>
                     
                     <div class="admin-controls">
@@ -1738,6 +1653,7 @@
             };
 
             await addPost(newPost);
+            hideAdminModal();
             event.target.reset();
             document.getElementById('useAutoDateTime').checked = true;
             alert('Post uploaded successfully!');
